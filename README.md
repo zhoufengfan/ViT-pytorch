@@ -74,7 +74,10 @@ To verify that the converted model weight is correct, we simply compare it with 
 |   ViT-L_32   | CIFAR-10  |  224x224   | 0.9903 |
 |   ViT-L_32   | CIFAR-100 |  224x224   | 0.9285 |
 
-
+### The result of Zhou
+|    model     |  dataset  | resolution |  acc   |
+|:------------:|:---------:|:----------:|:------:|
+| ViT-B_16-224 | CIFAR-10  |  224x224   |  0.989  |
 ### shorter train
 * In the experiment below, we used a resolution size (224x224).
 * [**tensorboard**](https://tensorboard.dev/experiment/lpknnMpHRT2qpVrSZi10Ag/#scalars)
