@@ -144,7 +144,7 @@ def train(args, model):
     if args.local_rank in [-1, 0]:
         os.makedirs(args.output_dir, exist_ok=True)
         writer = SummaryWriter(log_dir=os.path.join("/zff/vit/graph", args.name))
-    ramdom_input = torch.rand((12, 2, 224, 224))
+    ramdom_input = torch.rand((12, 3, 224, 224))
     writer.add_graph(model, (ramdom_input,))
     args.train_batch_size = args.train_batch_size // args.gradient_accumulation_steps
 
