@@ -141,7 +141,6 @@ def valid(args, model, writer, test_loader, global_step):
 
 def train(args, model):
     """ Train the model """
-    initial_model=model
     if args.local_rank in [-1, 0]:
         os.makedirs(args.output_dir, exist_ok=True)
         writer = SummaryWriter(log_dir=os.path.join("/zff/vit/graph", args.name))
@@ -197,7 +196,7 @@ def train(args, model):
 
             x, y = batch
             loss = model(x, y)
-            writer.add_graph(initial_model, (x, y))
+            # writer.add_graph(initial_model, (x, y))
 
             if args.gradient_accumulation_steps > 1:
                 loss = loss / args.gradient_accumulation_steps
