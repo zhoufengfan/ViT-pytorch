@@ -306,7 +306,6 @@ def main():
                                              timeout=timedelta(minutes=60))
         args.n_gpu = 1
     args.device = device
-
     # Setup logging
     logging.basicConfig(format='%(asctime)s - %(levelname)s - %(name)s - %(message)s',
                         datefmt='%m/%d/%Y %H:%M:%S',
