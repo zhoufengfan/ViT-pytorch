@@ -1,0 +1,1 @@
+python train.py --name cifar10-100_500 --dataset cifar10 --model_type ViT-B_16 --pretrained_dir /zff/vit/ViT-B_16.npz --fp16 --fp16_opt_level O2 --train_batch_size 128
