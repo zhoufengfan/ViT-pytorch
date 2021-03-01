@@ -270,6 +270,7 @@ class VisionTransformer(nn.Module):
         self.head = Linear(config.hidden_size, num_classes)
 
     def forward(self, x, labels=None):
+        # How to get the output whose shape is [32, 2048, 16, 8] better?
         x, attn_weights = self.transformer(x)
         logits = self.head(x[:, 0])
 
