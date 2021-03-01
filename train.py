@@ -141,11 +141,11 @@ def valid(args, model, writer, test_loader, global_step):
 
 def train(args, model):
     """ Train the model """
+    initial_model=model
     if args.local_rank in [-1, 0]:
         os.makedirs(args.output_dir, exist_ok=True)
         writer = SummaryWriter(log_dir=os.path.join("/zff/vit/graph", args.name))
-    ramdom_input = torch.rand((12, 3, 224, 224))
-    writer.add_graph(model, (ramdom_input,))
+    # ramdom_input = torch.rand((12, 3, 224, 224))
     args.train_batch_size = args.train_batch_size // args.gradient_accumulation_steps
 
     # Prepare dataset
@@ -194,8 +194,10 @@ def train(args, model):
                               disable=args.local_rank not in [-1, 0])
         for step, batch in enumerate(epoch_iterator):
             batch = tuple(t.to(args.device) for t in batch)
+
             x, y = batch
             loss = model(x, y)
+            writer.add_graph(initial_model, (x, y))
 
             if args.gradient_accumulation_steps > 1:
                 loss = loss / args.gradient_accumulation_steps
